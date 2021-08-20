@@ -16,9 +16,9 @@ public class SettingsUI : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    private void OnEnable()
+    private void OnEnable() //playersettings 플레이어 데이터 파일.. Onenable 즉, 활성화될 때 마다
     {
-        switch (PlayerSettings.controlType)
+        switch (PlayerSettings.controlType) //가져와서 switch문으로 비교 후 설정값으로 변경
         {
             case EControlType.Mouse:
                 MouseControlButton.image.color = Color.green;
@@ -32,7 +32,7 @@ public class SettingsUI : MonoBehaviour
         }
     }
 
-    public void SetControlMode(int controlType)
+    public void SetControlMode(int controlType) //버튼을 누를 때 마다 위에랑 전혀 다름 같아보이지만 이건 사용자가 누를때 마다 반응 button연결
     {
         PlayerSettings.controlType = (EControlType)controlType;
         switch (PlayerSettings.controlType)

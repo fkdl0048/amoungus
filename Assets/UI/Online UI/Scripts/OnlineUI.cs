@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Mirror;
 
 public class OnlineUI : MonoBehaviour
 {
@@ -30,5 +31,19 @@ public class OnlineUI : MonoBehaviour
         nicknameInputField.GetComponent<Animator>().SetTrigger("on");
         yield return new WaitForSeconds(0.1f);
         nicknameInputField.GetComponent<Animator>().ResetTrigger("on");
+    }
+
+    public void OnClickEnterGameRoomButton()
+    {
+        if (nicknameInputField.text != "")
+        {
+            var manager = AmongUsRoomManager.singleton;
+            manager.StartClient();
+        }
+        else
+        {
+            //nicknameInputField.GetComponent<Animator>().SetTrigger("on"); 원본
+            StartCoroutine("nicknameAni");
+        }
     }
 }
